@@ -8,11 +8,14 @@ import Login from "./Pages/Login";
 import RecruiterDashboard from "./Pages/RecruiterDashboard";
 import UserDashboard from "./Pages/UserDashboard";
 import AdminDashboard from "./Pages/AdminDashboard";
+import authLoader from "./loaders/authLoader";
+import { adminLoader, recruiterLoader, userLoader } from "./loaders/roleLoaders";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    loader: authLoader,
   },
   {
     path: "/register",
@@ -25,14 +28,26 @@ const router = createBrowserRouter([
   {
     path: "/recruiter/dashboard",
     element: <RecruiterDashboard />,
+    loader: recruiterLoader,
+       hydrateFallbackElement: <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+    </div>
   },
   {
     path: "/dashboard",
     element: <UserDashboard />,
+    loader: userLoader,
+       hydrateFallbackElement: <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+    </div>
   },
   {
     path: "/admin/dashboard",
     element: <AdminDashboard />,
+    loader: adminLoader,
+       hydrateFallbackElement: <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+    </div>
   },
 ]);
 

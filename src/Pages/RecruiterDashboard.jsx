@@ -1,6 +1,10 @@
+import Navbar from "../components/Navbar"
+
 const RecruiterDashboard = () => {
   return (
-    <div>RecruiterDashboard</div>
+      <div className="min-h-screen bg-gray-50">
+            <Navbar />
+        </div>
   )
 }
 

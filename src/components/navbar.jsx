@@ -1,12 +1,27 @@
-import { Link } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import { clearUser } from "../redux/authSlice";
+import { logoutUser } from "../services/authServices";
 
 const Navbar = () => {
-    const { isAuthenticated, user } = {
-        isAuthenticated: false, user: {
-            name: 'john',
-            role: 'user'
+    const { isAuthenticated, user } = useSelector(state => state.auth);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logoutUser();
+            dispatch(clearUser());
+            toast.success('Logged out successfully');
+            navigate('/login', { replace: true });
+        } catch (error) {
+            toast.error('Error logging out');
+            dispatch(clearUser());
+            navigate('/login', { replace: true });
         }
-    };
+    }
 
     return (
         <nav className="bg-white shadow">
@@ -68,6 +83,7 @@ const Navbar = () => {
                                                     </Link>
                                                     <button
                                                         className="w-full text-left block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                                                        onClick={handleLogout}
                                                     >
                                                         Logout
                                                     </button>
