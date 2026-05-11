@@ -9,7 +9,7 @@ import RecruiterDashboard from "./Pages/RecruiterDashboard";
 import UserDashboard from "./Pages/UserDashboard";
 import AdminDashboard from "./Pages/AdminDashboard";
 import authLoader from "./loaders/authLoader";
-import { adminLoader, recruiterLoader, userLoader } from "./loaders/roleLoaders";
+import { adminLoader, recruiterLoader, userLoader } from "./loaders/roleLoaders"; 
 
 const router = createBrowserRouter([
   {
