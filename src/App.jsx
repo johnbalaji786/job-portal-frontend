@@ -10,12 +10,24 @@ import UserDashboard from "./Pages/UserDashboard";
 import AdminDashboard from "./Pages/AdminDashboard";
 import authLoader from "./loaders/authLoader";
 import { adminLoader, recruiterLoader, userLoader } from "./loaders/roleLoaders"; 
+import JobDetails from "./Pages/JobDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     loader: authLoader,
+      hydrateFallbackElement: <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+    </div>
+  },
+    {
+    path: "/job/:jobId",
+    element: <JobDetails />,
+    loader: authLoader,
+    hydrateFallbackElement: <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+    </div>
   },
   {
     path: "/register",
