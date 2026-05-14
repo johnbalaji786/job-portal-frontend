@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = 'http://localhost:3001/api/v1';
+const baseURL = 'https://job-portal-backend-fnog.onrender.com/api/v1';
 
 const protectedInstance = axios.create({
     baseURL: baseURL,
